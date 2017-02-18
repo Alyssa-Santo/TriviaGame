@@ -58,24 +58,35 @@ function reset() {
 	timerId = setInterval(function(){myTimer();}, 1000);
 	$("#message").html(" ");
 	restart();
+
 }
 
 function restart() {
+	var l = (8 - e);
+
 	if (current === 8) {
-		clearInterval(timerId);
+
 		alert("GAME OVER!");
-		$("#message").html("Your Score is " + ((e / 8)*100) + "%");
-		setTimeout(reload,5000);
+		clearInterval(timerId);
+		$("#questiondiv").html("");
+
+		$("#questiondiv").append("You got " + e + " correct!");
+		$('#questiondiv').append("<br>");
+		$("#questiondiv").append("You got " + l + " wrong");
+		$('#questiondiv').append("<br>");
+		$("#questiondiv").append("Your Score is " + ((e / 8)*100) + "%");
+
+	$("#restartGame").css("display", "unset");
+
 	}
 }
 
-function reload() {
-	document.location.reload();
-}
 
-// $("restartGame").click(function(){
-// 	document.location.reload();
+$("#restartGame").click(function(){
+document.location.reload();
+});
 
-// });
+
+
 
 }); //End document function
